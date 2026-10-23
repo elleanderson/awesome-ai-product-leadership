@@ -19,6 +19,8 @@ Thank you for suggesting something. This list stays useful because it stays shor
 
 Open a pull request that adds one line in the right section, in this form:
 
-- [Name](link) by Author. One or two sentences on why a product leader should read it.
+```markdown
+- [Name](https://example.com) by Author. One or two sentences on why a product leader should read it.
+```
 
 Every pull request is checked for broken links and for UK house style. Please keep descriptions in UK English.
