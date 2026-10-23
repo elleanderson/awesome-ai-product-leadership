@@ -1,0 +1,27 @@
+name: Links and Style
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 6 * * 1"   # every Monday, so dead links are caught early
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check every link
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --max-retries 3 --timeout 30 --accept 200,201,202,203,204,206,301,302,303,307,308,403,429,999 README.md CONTRIBUTING.md
+          fail: true
+
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: elleanderson/uk-copy-checker@main
+        with:
+          paths: README.md CONTRIBUTING.md
